@@ -1,28 +1,40 @@
 ---
-const { title } = Astro.props.frontmatter || Astro.props;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/global.css';
+
+// Nhận dữ liệu từ các file Markdown (nếu có)
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title || Astro.props.title || "Võ Phú Toàn";
+const date = frontmatter?.date;
 ---
 <html lang="vi">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Võ Phú Toàn</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>{title} | Website cá nhân</title>
   </head>
   <body>
-    <header>
-      <h1>Võ Phú Toàn</h1>
-      <nav>
-        <a href="/">Trang chủ</a>
-        <a href="/ung-dung-bim">Nghiên cứu BIM</a>
-      </nav>
-    </header>
+    <!-- Header luôn hiển thị -->
+    <Header />
 
-    <main>
-      <slot />
-    </main>
+    <!-- Khung chứa nội dung chính và Sidebar chia làm 2 cột -->
+    <div class="main-wrapper">
+      <main>
+        <!-- Tự động chèn Tiêu đề và Ngày tháng nếu đây là một trang bài viết -->
+        {frontmatter && <h1 class="post-title">{title}</h1>}
+        {date && <p class="post-meta">🗓️ Đăng ngày: {date}</p>}
+        
+        <!-- Nội dung file Markdown hoặc trang sẽ được đẩy vào đây -->
+        <slot />
+      </main>
 
-    <footer>
-      <p>© 2026 Võ Phú Toàn. Giảng viên Kỹ thuật Xây dựng Công trình Giao thông.</p>
-    </footer>
+      <!-- Sidebar bên phải -->
+      <Sidebar />
+    </div>
+
+    <!-- Footer luôn hiển thị -->
+    <Footer />
   </body>
 </html>

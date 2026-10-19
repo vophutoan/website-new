@@ -1,0 +1,37 @@
+---
+// Tùy chỉnh Logo ở đây: Thay đường link bên trong dấu nháy kép bằng link ảnh logo thực tế của bạn
+const logoUrl = "https://via.placeholder.com/200x60/1e3a8a/ffffff?text=VoPhuToan.com";
+---
+<header>
+  <div class="header-container">
+    <a href="/" class="logo">
+      <img src={logoUrl} alt="Logo Võ Phú Toàn" />
+    </a>
+    
+    <nav>
+      <ul class="menu">
+        <li><a href="/">Trang chủ</a></li>
+        
+        <!-- Menu động có chứa nhiều bài viết bên trong -->
+        <li class="dropdown">
+          <a href="#">Kỹ thuật Xây dựng ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="/posts/ung-dung-bim">Tích hợp mô hình Revit</a></li>
+            <li><a href="#">Giáo trình Bê tông cốt thép</a></li>
+            <li><a href="#">Công cụ tính toán (Python/Workers)</a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#">Luận giải - Học thuật ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="/posts/kinh-dich-ung-dung">Kinh Dịch ứng dụng</a></li>
+            <li><a href="#">Phong Thủy - Bát Tự</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

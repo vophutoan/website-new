@@ -1,0 +1,37 @@
+---
+// Tự động quét và lấy tất cả bài viết markdown trong thư mục src/pages/posts/
+const allPosts = await Astro.glob('../pages/posts/*.md');
+
+// Sắp xếp bài viết mới nhất (Dựa vào ngày đăng)
+const latestPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 5);
+
+// Sắp xếp bài viết xem nhiều nhất (Dựa vào trường 'views' khai báo trong bài viết)
+const popularPosts = allPosts.sort((a, b) => (b.frontmatter.views || 0) - (a.frontmatter.views || 0)).slice(0, 5);
+---
+<aside class="sidebar">
+  
+  <div class="widget">
+    <h3>Bài viết mới nhất</h3>
+    <ul>
+      {latestPosts.map(post => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title}</a>
+          <span class="date">{post.frontmatter.date}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="widget">
+    <h3>Xem nhiều nhất</h3>
+    <ul>
+      {popularPosts.map(post => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title}</a>
+          <span class="date">{post.frontmatter.views} lượt xem</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+</aside>
