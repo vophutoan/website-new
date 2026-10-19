@@ -1,0 +1,8 @@
+:root { --primary-color: #2c3e50; --accent-color: #3498db; }
+body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
+header { border-bottom: 2px solid var(--accent-color); padding-bottom: 15px; margin-bottom: 30px; }
+header h1 { margin: 0; color: var(--primary-color); }
+nav { margin-top: 10px; }
+nav a { margin-right: 15px; text-decoration: none; color: var(--accent-color); font-weight: bold; }
+nav a:hover { text-decoration: underline; }
+footer { margin-top: 50px; border-top: 1px solid #ddd; padding-top: 20px; text-align: center; font-size: 0.9em; color: #666; }
